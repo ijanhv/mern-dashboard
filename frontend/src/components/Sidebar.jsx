@@ -94,6 +94,7 @@ const navItems = [
 ];
 
 const Sidebar = ({
+  user,
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
@@ -166,27 +167,76 @@ const Sidebar = ({
                         navigate(`/${lcText}`);
                         setActive(lcText);
                       }}
-                        sx={{
-                            backgroundColor: active === lcText ? theme.palette.secondary[300] : "transparent",
-                            color: active === lcText ? theme.palette.primary[600] : theme.palette.secondary[200]
-                        }}
+                      sx={{
+                        backgroundColor:
+                          active === lcText
+                            ? theme.palette.secondary[300]
+                            : "transparent",
+                        color:
+                          active === lcText
+                            ? theme.palette.primary[600]
+                            : theme.palette.secondary[200],
+                      }}
                     >
-                      <ListItemIcon 
+                      <ListItemIcon
                         sx={{
-                            ml: "2rem",
-                            color: active === lcText ? theme.palette.primary[600] : theme.palette.secondary[100]
+                          ml: "2rem",
+                          color:
+                            active === lcText
+                              ? theme.palette.primary[600]
+                              : theme.palette.secondary[100],
                         }}
-                      >{icon}</ListItemIcon>
+                      >
+                        {icon}
+                      </ListItemIcon>
                       <ListItemText primary={text} />
                       {active === lcText && (
-                        <ChevronRightOutlined sx={{ ml: "auto" }}  />
-                        )
-                    }
+                        <ChevronRightOutlined sx={{ ml: "auto" }} />
+                      )}
                     </ListItemButton>
                   </ListItem>
                 );
               })}
             </List>
+          </Box>
+          <Box position="absolute" bottom="2rem">
+            <Divider />
+            <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
+              {" "}
+              {/* top, right, bottom, left */}
+              <Box
+                component="img"
+                alt="profile"
+                src={profileImg}
+                height="40px"
+                width="40px"
+                borderRadius="50%"
+                sx={{
+                  objectFit: "cover",
+                }}
+              />
+              <Box textAlign="left">
+                <Typography
+                  fontSize="0.9rem"
+                  fontWeight="bold"
+                  sx={{ color: theme.palette.secondary[100] }}
+                >
+                  {user.name}
+                </Typography>
+                <Typography
+                  fontSize="0.8rem"
+                  sx={{ color: theme.palette.secondary[200] }}
+                >
+                  {user.occupation}
+                </Typography>
+              </Box>
+              <SettingsOutlined
+                sx={{
+                  color: theme.palette.secondary[300],
+                  fontSize: "25px",
+                }}
+              />
+            </FlexBetween>
           </Box>
         </Drawer>
       )}
