@@ -13,7 +13,10 @@ import salesRoutes from './routes/sales.js';
 // Data imports
 
 import User from './models/User.js';
-import { dataUser } from './data/index.js';
+
+import Product from './models/Product.js';
+import ProductStat from './models/ProductStat.js';
+import { dataUser, dataProduct, dataProductStat } from './data/index.js';
 
 
  
@@ -33,7 +36,7 @@ app.use(cors());
 
 // Routes
 
-app.use('/clients', clientRoutes);
+app.use('/client', clientRoutes);
 app.use('/general', generalRoutes);
 app.use('/managment', managementRoutes);
 app.use('/sales', salesRoutes );
@@ -48,6 +51,8 @@ mongoose.connect(process.env.MONGO_URL, {
 }).then(() => {
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))   
     // User.insertMany(dataUser);
+    // Product.insertMany(dataProduct);
+    // ProductStat.insertMany(dataProductStat);
 }).catch((error) => console.log(`${error} did not connect`));
 
  
