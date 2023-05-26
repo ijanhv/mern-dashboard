@@ -17,7 +17,8 @@ import OverallStat from './models/OverallStat.js';
 import Product from './models/Product.js';
 import ProductStat from './models/ProductStat.js';
 import Transaction from './models/Transaction.js';
-import { dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat } from './data/index.js';
+import AffiliateStat from './models/AffiliateStat.js';
+import { dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat, dataAffiliateStat } from './data/index.js';
 
 
  
@@ -39,7 +40,7 @@ app.use(cors());
 
 app.use('/client', clientRoutes);
 app.use('/general', generalRoutes);
-app.use('/managment', managementRoutes);
+app.use('/management', managementRoutes);
 app.use('/sales', salesRoutes );
 
 
@@ -56,6 +57,7 @@ mongoose.connect(process.env.MONGO_URL, {
     // ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
     // OverallStat.insertMany(dataOverallStat);
+    // AffiliateStat.insertMany(dataAffiliateStat);
 }).catch((error) => console.log(`${error} did not connect`));
 
  
